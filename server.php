@@ -24,11 +24,15 @@ class server{
   }
 
   public function deleteUser($id_users){
-    $stmt = $this->$conn->prepare("DELETE FROM useres WHERE id=:d");
+    $stmt = $this->$conn->prepare("DELETE FROM useres WHERE id=:id");
     $stmt->bindParam(':id, $id_users');
     $stmt->execute();
   }
 
+  public function updateUser($id_users,$email,$username){
+    $stmt = $this->conn->prepare ("UPDATE users SET email = :email, username = :username WHERE id = :id");
+    $stmt->execute(['email' => $email,'username' =$username, 'id' = $id]);
+  }
 
 
 }
