@@ -12,6 +12,12 @@ class server{
     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
 
+  public function printAll(){
+    $stmt= $this->conn->prepare("SELECT * FROM users");
+    $stmt->execute();
+    return $stmt->fetchAll(PD::FETCH_ASSOC);
+  }
+
   public function addUser($email,$username){
 
   }
