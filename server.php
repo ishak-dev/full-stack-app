@@ -30,8 +30,8 @@ class server{
   }
 
   public function updateUser($id_users,$email,$username){
-    $stmt = $this->conn->prepare ("UPDATE users SET email = :email, username = :username WHERE id = :id");
-    $stmt->execute(['email' => $email,'username' =$username, 'id' = $id]);
+    $stmt = $this->conn->prepare ("UPDATE users SET email = :email, username = :username WHERE id_users = :id");
+    $stmt->execute(['email' => $email,'username' => $username, 'id' => $id_users]);
   }
 
 
