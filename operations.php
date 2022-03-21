@@ -18,7 +18,7 @@ switch($operations){
 
   case 'delete':
      $id = $_REQUEST['id'];
-     $userClass->updateUser($id);
+     $userClass->deleteUser($id);
      break;
 
   case 'update':
