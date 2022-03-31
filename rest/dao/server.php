@@ -1,6 +1,6 @@
 <?php
 
-class server{
+class Server{
 
   private $conn;
 
@@ -38,15 +38,14 @@ class server{
   }
 
   public function deleteUser($id){
-    $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
-    $stmt->bindParam(':id,$id');
+    $stmt = $this->conn->prepare("DELETE FROM users WHERE id_users = :id");
+    $stmt->bindParam(':id',$id);
     $stmt->execute();
   }
 
 
 }
 
-$s = new server();
-print_r($s->getById('4'));
+
 
 ?>
