@@ -1,0 +1,84 @@
+body{
+  background-image: linear-gradient(to bottom right,#2f2f2f, #8e8e8e);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+}
+.login-input{
+ display: block;
+ width: 100%;
+ margin: 0  auto;
+ margin-bottom: 10px;
+ border: #D6ED17FF solid 2px;
+ border-radius: 6px;
+ height: 40px;
+ background-color: #535353;
+ color: white;
+ font-size: 13px;
+}
+.terms{
+  display: inline-block;
+  margin-bottom: 7%;
+}
+.login-form{
+  margin-top: 7%;
+  width: 75%;
+}
+.row{
+  align-items: center;
+  margin: 0 auto;
+}
+.left-side{
+  background-color: #363636;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  padding: 80px 50px;
+}
+
+p{
+  font-size: 13px;
+}
+a{
+  text-decoration: none;
+  color: #D6ED17FF;
+}
+.p-tag{
+  color: #7c7c7c;
+  margin-bottom: 10%;
+  margin-top: 5%;
+}
+button{
+  width: 100%;
+  border: none;
+  border-radius: 20px;
+  background-color: #D6ED17FF;
+  color: white;
+  height: 40px;
+}
+.forget-password{
+  margin-top: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.forget-password a{
+  color: #e3e3e3;
+}
+
+.account-registration{
+  margin: 0;
+}
+.right-side{
+  background-image: url("../img/motor.jpg");
+  background-color: #828282;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  padding:  80px 50px;
+  height: 576px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.center{
+  text-align: center;
+}
