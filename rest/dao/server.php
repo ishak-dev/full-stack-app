@@ -20,16 +20,18 @@ class Server{
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function getById($data){
+  public function getById($id){
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE id_users = :id");
-    $stmt->execute($data);
-    $todo['id'] = $this->conn->lastInsertId();
-    return $data;
+    $stmt->execute(['id'=>$id]);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return reset($result);
   }
 
-  public function addUser($user, $email){
-    $stmt = $this->conn->prepare("INSERT INTO users (username,email) VALUES (:user,:email)");
-    $stmt->execute(['user'=>$user,'email'=>$email]);
+  public function addUser($data){
+    $stmt = $this->conn->prepare("INSERT INTO users (username, email) VALUES (:username, :email)");
+    $stmt->execute($data);
+    //$data['id'] = $this->conn->lastInsertId();
+    return $data;
   }
 
   public function updateUser($data){

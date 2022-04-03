@@ -19,9 +19,11 @@ Flight::route('GET /home',function(){
   Flight::json(Flight::server()->listAll());
 });
 
-Fligth::route("POST /home/@user"){
-  Flight::json(Flight::server()->addUser(Flight::request->data->getData()));
-}
+Flight::route("POST /home",function(){
+  $data = Flight::request()->data->getData();
+  Flight::json(Flight::server()->addUser($data));
+});
+
 
 Flight::route("PUT /home/@id",function($id){
   $data = Flight::request()->data->getData();
