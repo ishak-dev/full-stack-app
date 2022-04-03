@@ -32,9 +32,10 @@ class Server{
     $stmt->execute(['user'=>$user,'email'=>$email]);
   }
 
-  public function updateUser($id,$user,$email){
-    $stmt = $this->conn->prepare("UPDATE users SET username = :user, email = :email WHERE id_users = :id");
-    $stmt->execute(['user'=>$user,'email'=>$email,'id'=>$id]);
+  public function updateUser($data){
+    $stmt = $this->conn->prepare("UPDATE users SET username = :username, email = :email WHERE id_users = :id");
+    $stmt->execute($data);
+    return $data;
   }
 
   public function deleteUser($id){
