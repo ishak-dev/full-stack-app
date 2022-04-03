@@ -20,11 +20,11 @@ class Server{
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function getById($id){
+  public function getById($data){
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE id_users = :id");
-    $stmt->execute(['id'=>$id]);
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return reset($result);
+    $stmt->execute($data);
+    $todo['id'] = $this->conn->lastInsertId();
+    return $data;
   }
 
   public function addUser($user, $email){
