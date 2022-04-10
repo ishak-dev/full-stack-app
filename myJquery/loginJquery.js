@@ -1,4 +1,9 @@
 function doLogin(){
-  var email = ("#email").val();
-  var pass = ("#password").val();
+
+  var login_infor = {
+    "user" : $("#username").val(),
+    "pass" : $("#password").val(),
+  }
+
+  console.log(user , pass);
 }
