@@ -33,7 +33,7 @@ Flight::route("PUT /home/@id",function($id){
 
 Flight::route('DELETE /home/@id',function($id){
   Flight::server()->deleteUser($id);
-  Flight.json(["message"=>"deleted"]);
+  Flight::json(["message"=>"deleted"]);
 });
 
 Flight::start();

@@ -84,6 +84,23 @@ function saveChanges() {
   })
 }
 
+
+function deleteUser(){
+  console.log($('#id').html());
+  $.ajax({
+    url: `rest/home/${$('#id').html()}`,
+    type: 'DELETE',
+    success: function(result) {
+      $("#exampleModal").modal("hide");
+      $("#delete-btn").attr("disabled", false);
+      $("#user-list").html(`<td><div class="spinner-border" role="status">
+      <span class="sr-only"></span>
+      </div></td>`);
+      getUsers();
+      console.log(result);
+    },
+  })
+}
 // function addUser() {
 //   console.log("save todo");
 //
