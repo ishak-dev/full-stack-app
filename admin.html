@@ -64,8 +64,8 @@
           <input type="text" name="" value="" id="email">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="delete-btn" onclick="deleteUser()" data-dismiss="modal">Delete</button>
-          <button type="button" id="save-users-btn" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+          <button type="button" class="btn btn-secondary" id="delete-btn" onclick="userService.delete()" data-dismiss="modal">Delete</button>
+          <button type="button" id="save-users-btn" class="btn btn-primary" onclick="userService.update()">Save changes</button>
         </div>
       </div>
     </div>
