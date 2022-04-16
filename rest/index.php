@@ -4,37 +4,18 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors',1);
 error_reporting(E_ALL);
 
-require_once "../vendor/autoload.php";
-require_once "dao/server.php";
-
-//Flight::route('/home','hello');
-
-Flight::register('server','Server');
-
-Flight::route('GET /home/@id',function($id){
-  Flight::json(Flight::server()->getById($id));
-});
-
-Flight::route('GET /home',function(){
-  Flight::json(Flight::server()->listAll());
-});
-
-Flight::route("POST /home",function(){
-  $data = Flight::request()->data->getData();
-  Flight::json(Flight::server()->addUser($data));
-});
+require_once __DIR__ ."/../vendor/autoload.php";
+require_once __DIR__ ."/services/CommentService.class.php";
+require_once __DIR__ ."/services/UserService.class.php";
 
 
-Flight::route("PUT /home/@id",function($id){
-  $data = Flight::request()->data->getData();
-  $data['id'] = $id;
-  Flight::json(Flight::server()->updateUser($data));
-});
+Flight::register('userService','UserService');
+Flight::register('commentService','CommentService');
 
-Flight::route('DELETE /home/@id',function($id){
-  Flight::server()->deleteUser($id);
-  Flight::json(["message"=>"deleted"]);
-});
+require_once __DIR__.'/routes/UserRoutes.php';
+require_once __DIR__.'/routes/CommentRoutes.php';
+
+
 
 Flight::start();
 ?>
