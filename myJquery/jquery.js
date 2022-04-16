@@ -17,12 +17,12 @@ var userService = {
       for (let i = 0; i < data.length; i++) {
         html += `
       <tr>
-        <td>${data[i].id_users}</td>
+        <td>${data[i].id}</td>
         <td>${data[i].username}</td>
         <td>${data[i].email}</td>
         <td>dolor</td>
         <td>sit</td>
-        <td><button type="button" onclick="userService.get(${data[i].id_users})" class="btn btn-primary" id="modal-btn" data-toggle="modal" data-target="#exampleModal" >
+        <td><button type="button" onclick="userService.get(${data[i].id})" class="btn btn-primary" id="modal-btn" data-toggle="modal" data-target="#exampleModal" >
             view</button>
         </td>
       </tr>
@@ -98,7 +98,7 @@ var userService = {
       }
     })
   },
-  load: function(){
+  get: function(id){
     $("#modal-btn").attr("disabled", true);
     $.get(`rest/home/${id}`, function(data) {
       console.log(data);
