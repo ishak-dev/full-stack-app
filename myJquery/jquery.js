@@ -97,12 +97,22 @@ var userService = {
         })
       }
     })
+  },
+  load: function(){
+    $("#modal-btn").attr("disabled", true);
+    $.get(`rest/home/${id}`, function(data) {
+      console.log(data);
+      $("#id").html(data.id);
+      $("#username").val(data.username);
+      $("#email").val(data.email);
+      $("#exampleModal").modal("show");
+      $("#modal-btn").attr("disabled", false);
+    })
+
   }
 }
 
 userService.init();
-
-
 
 
 

@@ -21,7 +21,7 @@ class Server{
   }
 
   public function getById($id){
-    $stmt = $this->conn->prepare("SELECT * FROM users WHERE id_users = :id");
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
     $stmt->execute(['id'=>$id]);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return reset($result);
@@ -35,13 +35,13 @@ class Server{
   }
 
   public function updateUser($data){
-    $stmt = $this->conn->prepare("UPDATE users SET username = :username, email = :email WHERE id_users = :id");
+    $stmt = $this->conn->prepare("UPDATE users SET username = :username, email = :email WHERE id = :id");
     $stmt->execute($data);
     return $data;
   }
 
   public function deleteUser($id){
-    $stmt = $this->conn->prepare("DELETE FROM users WHERE id_users = :id");
+    $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
     $stmt->bindParam(':id',$id);
     $stmt->execute();
   }
