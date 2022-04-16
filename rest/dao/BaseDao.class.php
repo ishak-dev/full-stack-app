@@ -50,7 +50,7 @@ class BaseDao{
     return $data;
   }
 
-  public function execute_update($data, $id, $id_column = "id"){
+  public function update($data, $id, $id_column = "id"){
     $query = "UPDATE ".$this->table_name. " SET ";
     foreach($data as $name=>$value){
       $query .= $name ."= : ".$name.", ";
@@ -74,7 +74,7 @@ class BaseDao{
     return reset($result);
   }
 
-  
+
 
 
 
