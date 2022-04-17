@@ -10,7 +10,9 @@ class UserService extends BaseService{
   public function __construct(){
     parent::__construct(new UserDao());
   }
-
+  public function getCommentsById($id_user){
+    return $this->dao->getCommentsById($id_user);
+  }
 
 }
 

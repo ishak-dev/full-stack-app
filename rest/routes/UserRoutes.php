@@ -16,13 +16,17 @@ Flight::route("POST /home",function(){
 
 Flight::route("PUT /home/@id",function($id){
   $data = Flight::request()->data->getData();
-  $data['id'] = $id;
-  Flight::json(Flight::userService()->update($data));
+  Flight::json(Flight::userService()->update($data,$id));
 });
 
 Flight::route('DELETE /home/@id',function($id){
   Flight::userService()->delete($id);
   Flight::json(["message"=>"deleted"]);
+});
+
+
+Flight::route('GET /home/@id/comments',function($id){
+  Flight::json(Flight::userService()->getCommentsById($id));
 });
 
 ?>

@@ -53,11 +53,11 @@ class BaseDao{
   public function update($data, $id, $id_column = "id"){
     $query = "UPDATE ".$this->table_name. " SET ";
     foreach($data as $name=>$value){
-      $query .= $name ."= : ".$name.", ";
+      $query .= $name ."= :".$name.", ";
     }
 
     $query = substr($query,0,-2);
-    $query .= "WHERE ${$id_column} = :id";
+    $query .= " WHERE ${$id_column} = :id";
 
     $stmt = $this->conn->prepare($query);
     $data['id']= $id;
@@ -66,7 +66,7 @@ class BaseDao{
 
   protected function query($query, $parmas){
     $stmt = $this->conn->prepare($query);
-    $stmt->execute($params);
+    $stmt->execute($parmas);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
   protected function query_unique($query, $parmas){
