@@ -2,10 +2,10 @@
 
 
 
-class BaseService{
+abstract class BaseService{
 
-  private $dao;
-  public __construct($dao){
+  protected $dao;
+  public function __construct($dao){
     $this->dao = $dao;
   }
 

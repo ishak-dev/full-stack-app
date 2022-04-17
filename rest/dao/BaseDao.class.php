@@ -14,20 +14,20 @@ class BaseDao{
   }
 
   public function listAll(){
-    $stmt = $this->conn->prepare("SELECT * FROM $this->table_name");
+    $stmt = $this->conn->prepare("SELECT * FROM ".$this->table_name);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
   public function getById($id){
-    $stmt = $this->conn->prepare("SELECT * FROM $this->table_name WHERE id = :id");
+    $stmt = $this->conn->prepare("SELECT * FROM ". $this->table_name ." WHERE id = :id");
     $stmt->execute(['id'=>$id]);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return reset($result);
   }
 
   public function delete($id){
-    $stmt = $this->conn->prepare("DELETE FROM $this->table_name WHERE id = :id");
+    $stmt = $this->conn->prepare("DELETE FROM ".$this->table_name." WHERE id = :id");
     $stmt->bindParam(':id',$id);
     $stmt->execute();
   }
@@ -61,7 +61,7 @@ class BaseDao{
 
     $stmt = $this->conn->prepare($query);
     $data['id']= $id;
-    $stmt->execute($data)
+    $stmt->execute($data);
   }
 
   protected function query($query, $parmas){

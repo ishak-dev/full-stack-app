@@ -7,11 +7,11 @@ require_once __DIR__.'/../dao/UserDao.class.php';
 class UserService extends BaseService{
 
 
-  public __construct(){
+  public function __construct(){
     parent::__construct(new UserDao());
   }
 
- 
+
 }
 
  ?>

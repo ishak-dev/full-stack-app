@@ -6,8 +6,8 @@ require_once __DIR__.'/../dao/CommentDao.class.php';
 
 class CommentService extends BaseService{
 
-  
-  public __construct(){
+
+  public function __construct(){
     parent::__construct(new CommentDao());
   }
 
