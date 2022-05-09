@@ -87,7 +87,10 @@ var userService = {
         userService.list();
         console.log(result);
       },
-      get: function(id) {
+
+    })
+  },
+  get: function(id) {
         $("#modal-btn").attr("disabled", true);
         $.get(`rest/home/${id}`, function(data) {
           console.log(data);
@@ -98,19 +101,8 @@ var userService = {
           $("#modal-btn").attr("disabled", false);
         })
       }
-    })
-  },
-  get: function(id) {
-    $("#modal-btn").attr("disabled", true);
-    $.get(`rest/home/${id}`, function(data) {
-      console.log(data);
-      $("#id").html(data.id);
-      $("#username").val(data.username);
-      $("#email").val(data.email);
-      $("#exampleModal").modal("show");
-      $("#modal-btn").attr("disabled", false);
-    })
-  }
+
+
 }
 
 userService.init();
