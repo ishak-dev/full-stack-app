@@ -1,0 +1,14 @@
+.bg-dark{
+
+  background-color: #18202E!important;
+}
+.logo{
+ height: 70px;
+ overflow: hidden;
+}
+.logo img{
+  vertical-align: middle;
+  height: auto;
+  width: 70%;
+  margin-top: -25px;
+}
