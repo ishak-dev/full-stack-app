@@ -1,11 +1,462 @@
-.section{
+.section {
   text-align: center;
+  position: relative;
+  height: 100%;
 }
+
+.section h2 {
+  display: block;
+  margin: 10% 0%;
+  color: #ff3100;
+}
+
 #myVideo {
   position: fixed;
   right: 0;
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  z-index:-1;
+  z-index: -1;
+}
+
+.container {
+  padding: 10px 20px;
+  background-color: #f4f5fb;
+  border-radius: 5px;
+}
+
+.card img {
+  padding: 50px 50px 0px 50px;
+}
+
+.card {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.frontsearch-wrap {
+  -webkit-text-size-adjust: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  overflow: hidden;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  border-radius: 4px;
+  box-shadow: inset 0 -4px 0px 0px #dfe2f0, 0 10px 20px 0px rgba(192, 196, 215, 0.25);
+  background: #fff;
+  padding: 46px 29px 41px;
+}
+
+.frontsearch-cont {
+  -webkit-text-size-adjust: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: relative;
+  padding: 60px 0;
+  margin: 0 17%;
+}
+
+.frontsearch-img {
+  -webkit-text-size-adjust: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  margin: 40px 0 40px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.frontsearch-res1 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 8%;
+  left: 34%;
+}
+
+.frontsearch-res2 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 8%;
+  left: -1%;
+}
+
+.frontsearch-res3 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 8%;
+  left: 82%;
+}
+
+.frontsearch-res4 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 34%;
+  left: -22%;
+}
+
+.frontsearch-res5 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 34%;
+  left: 99%;
+}
+
+.frontsearch-res6 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 59%;
+  left: -22%;
+}
+
+.frontsearch-res7 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 59%;
+  left: 105%;
+}
+
+.frontsearch-res8 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 87%;
+  left: -1%;
+}
+
+.frontsearch-res9 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 87%;
+  left: 40%;
+}
+
+.frontsearch-res10 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  position: absolute;
+  display: block;
+  z-index: 4;
+  white-space: nowrap;
+  transition: all 0.2s;
+  top: 87%;
+  left: 88%;
+}
+
+.frontsearch-point1 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 39%;
+  left: 58%;
+}
+
+.frontsearch-point2 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 42%;
+  left: 27%;
+}
+
+.frontsearch-point3 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 28%;
+  left: 63%;
+}
+
+.frontsearch-point4 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 55%;
+  left: 9%;
+}
+
+.frontsearch-point5 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 41%;
+  left: 75%;
+}
+
+.frontsearch-point6 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 67%;
+  left: 8%;
+}
+
+.frontsearch-point7 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 69%;
+  left: 81%;
+}
+
+.frontsearch-point8 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 60%;
+  left: 41%;
+}
+
+.frontsearch-point9 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 63%;
+  left: 45%;
+}
+
+.frontsearch-point10 {
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  z-index: 4;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.2s;
+  top: 70%;
+  left: 77%;
 }
