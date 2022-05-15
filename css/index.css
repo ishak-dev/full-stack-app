@@ -24,7 +24,9 @@
   background-color: #f4f5fb;
   border-radius: 5px;
 }
-
+.last-added{
+  margin-bottom: 5%;
+}
 .card img {
   padding: 50px 50px 0px 50px;
 }
@@ -42,6 +44,7 @@
   line-height: 1.42857143;
   overflow: hidden;
   margin: 0;
+  margin-bottom: 5%;
   position: relative;
   z-index: 2;
   border-radius: 4px;
@@ -59,6 +62,7 @@
   position: relative;
   padding: 60px 0;
   margin: 0 17%;
+
 }
 
 .frontsearch-img {
@@ -332,7 +336,7 @@
   display: block;
   transition: all 0.2s;
   top: 55%;
-  left: 9%;
+  left: 14%;
 }
 
 .frontsearch-point5 {
@@ -374,7 +378,7 @@
   display: block;
   transition: all 0.2s;
   top: 67%;
-  left: 8%;
+  left: 13%;
 }
 
 .frontsearch-point7 {
@@ -459,4 +463,54 @@
   transition: all 0.2s;
   top: 70%;
   left: 77%;
+}
+
+.card-deck{
+  margin-bottom: 15px;
+}
+
+.special{
+  -webkit-text-size-adjust: 100%;
+color: inherit;
+border: 0;
+font: inherit;
+vertical-align: baseline;
+box-sizing: border-box;
+margin: 0 0 20px;
+height: 234px;
+line-height: 234px;
+position: relative;
+display: block;
+padding: 0;
+text-align: center;
+}
+
+.second-row{
+  height: 300px;
+}
+
+footer{
+margin: 5% 9% 0% 9%;
+}
+.nav-link{
+  color: white!important;
+}
+
+footer p{
+  color: #5a79b0;
+
+}
+footer h5{
+  color: #ff3100;
+}
+footer button{
+  background-color: #ff3100!important;
+  border-color: #18202E!important;
+}
+.bi{
+  margin: 0% 5px;
+}
+.link-dark{
+
+      color: #ff3100!important;
 }
