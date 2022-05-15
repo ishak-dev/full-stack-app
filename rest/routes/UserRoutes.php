@@ -1,5 +1,7 @@
 <?php
 
+
+
 Flight::route('GET /home/@id',function($id){
   Flight::json(Flight::userService()->getById($id));
 });
