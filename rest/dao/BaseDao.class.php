@@ -46,7 +46,8 @@ class BaseDao{
     $query .= ")";
 
     $stmt = $this->conn->prepare($query);
-    $data['id'] = $this->conn->lastInsertId();
+  // $data['id'] = $this->conn->lastInsertId();
+    $stmt->execute($data);
     return $data;
   }
 
