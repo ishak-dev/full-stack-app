@@ -18,7 +18,7 @@ Flight::route("POST /home",function(){
 
 Flight::route("PUT /home/@id",function($id){
   $data = Flight::request()->data->getData();
-  Flight::json(Flight::userService()->update($data,$id));
+  Flight::json(Flight::userService()->update($id,$data));
 });
 
 Flight::route('DELETE /home/@id',function($id){

@@ -22,8 +22,8 @@ abstract class BaseService{
   public function insert($data){
     return $this->dao->insert($data);
   }
-  public function update($data,$id){
-    return $this->dao->update($data,$id);
+  public function update($id,$data){
+    return $this->dao->update($id,$data);
   }
 
 

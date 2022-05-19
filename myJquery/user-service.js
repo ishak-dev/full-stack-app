@@ -12,16 +12,16 @@ var userService = {
   },
   list: function() {
     $.ajax({
-         url: "rest/home",
-         type: "GET",
-         beforeSend: function(xhr){
-           xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
-         },
-         success: function(data) {
-         $("#user-list").html("");
-         var html = "";
-         for (let i = 0; i < data.length; i++) {
-           html += `
+      url: "rest/home",
+      type: "GET",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      success: function(data) {
+        $("#user-list").html("");
+        var html = "";
+        for (let i = 0; i < data.length; i++) {
+          html += `
          <tr>
            <td>${data[i].id}</td>
            <td>${data[i].username}</td>
@@ -35,14 +35,14 @@ var userService = {
            </td>
          </tr>
          `
-         }
-         $("#user-list").html(html);},
-         error:
-         function(XMLHttpRequest, textStatus, errorThrown){
-           toastr.error(XMLHttpRequest.responseJSON.message);
-           loginService.logout();
-         }
-      });
+        }
+        $("#user-list").html(html);
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+        loginService.logout();
+      }
+    });
 
 
   },
@@ -50,7 +50,7 @@ var userService = {
     $.ajax({
       url: `rest/home`,
       type: 'POST',
-      beforeSend: function(xhr){
+      beforeSend: function(xhr) {
         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
       },
       data: JSON.stringify(users),
@@ -67,8 +67,7 @@ var userService = {
         console.log(result);
         toastr.success("You added user");
       },
-      error:
-      function(XMLHttpRequest, textStatus, errorThrown){
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
         toastr.error(XMLHttpRequest.responseJSON.message);
       }
     })
@@ -77,6 +76,9 @@ var userService = {
     $.ajax({
       url: `rest/home/${$('#id').html()}`,
       type: 'DELETE',
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
       success: function(result) {
         $("#exampleModal").modal("hide");
         $("#delete-btn").attr("disabled", false);
@@ -87,8 +89,7 @@ var userService = {
         console.log(result);
         toastr.success("You deleted successfully");
       },
-      error:
-      function(XMLHttpRequest, textStatus, errorThrown){
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
         toastr.error(XMLHttpRequest.responseJSON.message);
       }
 
@@ -99,9 +100,13 @@ var userService = {
     $("#save-users-btn").attr("disabled", true);
     users.username = $('#username').val();
     users.email = $('#email').val();
+    console.log($('#id').html());
     $.ajax({
       url: `rest/home/${$('#id').html()}`,
       type: 'PUT',
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
       data: JSON.stringify(users),
       contentType: "application/json",
       dataType: "json",
@@ -118,16 +123,27 @@ var userService = {
     })
   },
   get: function(id) {
-        $("#modal-btn").attr("disabled", true);
-        $.get(`rest/home/${id}`, function(data) {
-          console.log(data);
-          $("#id").html(data.id_users);
-          $("#username").val(data.username);
-          $("#email").val(data.email);
-          $("#exampleModal").modal("show");
-          $("#modal-btn").attr("disabled", false);
-        })
-      }
+    $("#modal-btn").attr("disabled", true);
+    $.ajax({
+      url: `rest/home/${id}`,
+      type: "GET",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      success: function(data) {
+        console.log(data);
+        $("#id").html(data.id);
+        $("#username").val(data.username);
+        $("#email").val(data.email);
+        $("#exampleModal").modal("show");
+        $("#modal-btn").attr("disabled", false);
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+        loginService.logout();
+      },
+    })
+  }
 
 
 }

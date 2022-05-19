@@ -51,14 +51,14 @@ class BaseDao{
     return $data;
   }
 
-  public function update($data, $id, $id_column = "id"){
-    $query = "UPDATE ".$this->table_name. " SET ";
+  public function update($id, $data, $id_column = "id"){
+    $query = "UPDATE " .$this->table_name. " SET ";
     foreach($data as $name=>$value){
-      $query .= $name ."= :".$name.", ";
+      $query .= $name ."= :". $name. ", ";
     }
 
     $query = substr($query,0,-2);
-    $query .= " WHERE ${$id_column} = :id";
+    $query .= " WHERE ${id_column} = :id";
 
     $stmt = $this->conn->prepare($query);
     $data['id']= $id;
