@@ -1,5 +1,13 @@
 var articleIndex = {
   init: function() {
+    $("#add-article-form").validate({
+      submitHandler: function(form) {
+        var article = Object.fromEntries((new FormData(form)).entries());
+        console.log(article);
+        articleService.add(article);
+        articleService.list();
+      }
+    })
     articleIndex.listLastAdded();
   },
   listLastAdded: function() {
@@ -43,8 +51,5 @@ var articleIndex = {
   },
   listSpecialDeals: function() {
 
-  },
+  }
 }
-
-
-articleIndex.init();
