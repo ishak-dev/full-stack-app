@@ -14,10 +14,10 @@ var articleIndex = {
         $(".last-added").html("");
         var html = "";
 
-        for (let i = 0; i < 3; i++) {
+        for (let i = data.length-1; i > data.length-4; i--) {
 
-          if (i == 0) {
-            html += `<div class="card first-card" style="width: 32rem;">
+          if (i == data.length-1) {
+            html += `<div class="card first-card" style="width: 28rem;">
               <img src="img/img1.jpg" style="max-height:235px;" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">${data[i].title}</h5>
@@ -70,10 +70,10 @@ var articleIndex = {
         $(".special-deals").html("");
         var html = "";
         let br=0;
-        for (let i = 0; i < data.length && br <7; i++) {
+        for (let i = 0; i < data.length && br <6; i++) {
           console.log(data[i]);
           if(data[i].special_deals != "" && data[i].special_deals!=null){
-            html +=`<div class="card" col-3>
+            html +=`<div class="card" >
               <div class="special">
                 <img class="card-img-top" src="img/img4.jpg" alt="Card image cap">
               </div>
@@ -90,10 +90,12 @@ var articleIndex = {
                 </div>
               </div>
             </div>`
+            br++;
           }
+
         }
         $(".special-deals").html(html);
-        br++;
+
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         toastr.error(XMLHttpRequest.responseJSON.message);
