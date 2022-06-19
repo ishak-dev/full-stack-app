@@ -56,9 +56,10 @@
         <tr>
           <th>#ID</th>
           <th>Title</th>
+          <th>Type</th>
           <th>Description</th>
           <th>Price</th>
-          <th>Header</th>
+
         </tr>
       </thead>
       <tbody id="article-list">
@@ -178,9 +179,7 @@
             <div class="form-group">
               <label for="inputAddress">Description</label>
 
-              <textarea id="input-description" name="description" rows="4" type="text" class="form-control" id="input-description" placeholder="Description" required>
-                  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-              </textarea>
+              <textarea id="input-description" name="description" rows="4" type="text" class="form-control" id="input-description" placeholder="Description" required></textarea>
             </div>
             <div class="form-group">
               <label for="inputAddress2">Additional option</label>
@@ -193,7 +192,7 @@
               </div>
               <div class="form-group col-md-4">
                 <label for="inputState">Type</label>
-                <select id="input_type" name="type" class="form-control" required>
+                <select id="input-type" name="type" class="form-control" required>
                   <option selected>Other..</option>
                   <option>Seats</option>
                   <option>Hand Controls</option>
@@ -209,9 +208,10 @@
                 </select>
               </div>
               <div class="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
+                <label for="inputZip">Special</label>
+                <input type="text" class="form-control" id="input-special-price" name="special_deals">
               </div>
+
             </div>
             <div class="form-group" id="form-group-btn">
               <button type="submit" class="btn btn-primary" id="add-article-btn">Add</button>

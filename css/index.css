@@ -77,6 +77,23 @@
   z-index: 2;
 }
 
+.frontsearch-res a{
+  color: #a0a6c5;
+  text-decoration: none;
+}
+
+.frontsearch-res a span{
+  color:white;
+  background: #a0a6c5;
+  border-radius: 10px;
+  padding: 0px 10px;
+
+}
+
+.frontsearch-res:hover .frontsearch-res a{
+  background: red;
+}
+
 .frontsearch-res1 {
   -webkit-text-size-adjust: 100%;
   margin: 0;
@@ -467,6 +484,15 @@
 
 .card-deck{
   margin-bottom: 15px;
+}
+
+.card-type{
+  font-weight: bold;
+  color: #d4d6d5;
+}
+.card-price{
+  font-weight: bold;
+  color: #ff3100;
 }
 
 .special{

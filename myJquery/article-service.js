@@ -25,13 +25,14 @@ var articleService = {
          <tr>
            <td>${data[i].id}</td>
            <td>${data[i].title}</td>
+           <td>${data[i].type}</td>
            <td>${data[i].description}</td>
            <td>${data[i].price}</td>
-           <td>sit</td>
+
            <td><button type="button" onclick="articleService.get(${data[i].id})" class="btn btn-primary" id="modal-btn" data-bs-toggle="modal" data-bs-target="#add-article-modal">
                view</button>
                <button type="button" onclick="commentService.listComments(${data[i].id})" class="btn btn-success" id="modal-btn" data-bs-toggle="modal" data-bs-target="#commentsModal" >
-                   Manage comments</button>
+                   Manage reviews</button>
            </td>
          </tr>
          `
@@ -103,8 +104,9 @@ var articleService = {
     article.price=$("#input-price").val();
     article.description=$("#input-description").val();
     article.delivery_time=$("#input-delivery").val();
-    article.type=$("#input-type").val();
-    console.log($('#id').html());
+    article.type=$("#input-type").find(":selected").text();
+    article.special_deals=$("#input-special-price").val();
+    console.log(article.type);
     $.ajax({
       url: `rest/article/${id}`,
       type: 'PUT',
@@ -145,7 +147,8 @@ var articleService = {
         $("#input-description").val(data.description);
         $("#input-delivery").val(data.delivery_time);
         $("#input-type").val(data.type);
-
+        $("#input-special-price").val(data.special_deals);
+        
         $('#form-group-btn').html(html);
 
         $("#modal-btn").attr("disabled", false);
@@ -156,7 +159,7 @@ var articleService = {
       },
     })
   },
-  
+
 }
 
 articleService.init();
