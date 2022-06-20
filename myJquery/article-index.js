@@ -1,7 +1,12 @@
+
+
+
+
 var articleIndex = {
   init: function() {
     articleIndex.listLastAdded();
     articleIndex.listSpecialDeals();
+
   },
   listLastAdded: function() {
     $.ajax({
@@ -13,12 +18,15 @@ var articleIndex = {
       success: function(data) {
         $(".last-added").html("");
         var html = "";
+        var spa= "";
 
         for (let i = data.length-1; i > data.length-4; i--) {
 
           if (i == data.length-1) {
-            html += `<div class="card first-card" style="width: 28rem;">
-              <img src="img/img1.jpg" style="max-height:235px;" class="card-img-top" alt="...">
+            html += `<a href="#article" class="card-link" onclick="articleIndex.listItemById(${data[i].id})"><div class="card first-card" style="width: 28rem;">
+            <div class="img-container">
+            <img src="${data[i].img_link}" class="card-img-top" alt="...">
+            </div>
               <div class="card-body">
                 <h5 class="card-title">${data[i].title}</h5>
                 <div class="row">
@@ -30,10 +38,14 @@ var articleIndex = {
                   </div>
                 </div>
               </div>
-            </div>`
+            </div></a>`
+
           } else {
-            html += `<div class="card" style="width: 18rem;">
-              <img src="img/img2.jpg" class="card-img-top" alt="...">
+
+            html += `<a href="#article" class="card-link" onclick="articleIndex.listItemById(${data[i].id})"><div class="card" style="width: 18rem;">
+              <div class="img-container">
+              <img src="${data[i].img_link}" class="card-img-top" alt="...">
+              </div>
               <div class="card-body">
                 <h5 class="card-title">${data[i].title}</h5>
                 <div class="row">
@@ -45,10 +57,12 @@ var articleIndex = {
                   </div>
                 </div>
               </div>
-            </div>`
+            </div></a>`
+
           }
 
         }
+        $("#jqueryspapp").append(spa);
         $(".last-added").html(html);
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -66,7 +80,6 @@ var articleIndex = {
         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
       },
       success: function(data) {
-        console.log(data);
         $(".special-deals").html("");
         var html = "";
         let br=0;
@@ -75,7 +88,9 @@ var articleIndex = {
           if(data[i].special_deals != "" && data[i].special_deals!=null){
             html +=`<div class="card" >
               <div class="special">
-                <img class="card-img-top" src="img/img4.jpg" alt="Card image cap">
+              <div class="img-container">
+              <img src="${data[i].img_link}" class="card-img-top" alt="...">
+              </div>
               </div>
               <div class="card-body">
                 <h5 class="card-title">${data[i].title}</h5>
@@ -102,6 +117,90 @@ var articleIndex = {
         loginService.logout();
       }
     });
+  },
+  listItemById: function(id){
+    if(id != undefined){
+    var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + `?id=${id}`;
+    window.history.pushState({ path: refresh }, '', refresh);
+    }
+    let searchParams = new URLSearchParams(window.location.search);
+    let idUrl = searchParams.get('id');
+
+    var html="";
+
+    $.ajax({
+      url: `rest/article/${idUrl}`,
+      type: "GET",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      success: function(data) {
+        html=`<!-- Left Column / Motor Image -->
+        <div class="left-column">
+          <img data-image="red" class="active" src="${data.img_link}" alt="">
+        </div>
+
+
+        <!-- Right Column -->
+        <div class="right-column">
+
+          <!-- Product Description -->
+          <div class="product-description">
+            <span>${data.type}</span>
+            <h1>${data.title}</h1>
+            <p>${data.description}</p>
+          </div>
+
+          <!-- Product Configuration -->
+          <div class="product-configuration">
+
+            <!-- Product Color -->
+            <div class="product-color">
+              <span>Delivery Time</span>
+
+              <div class="color-choose">
+                <div>
+                  <input data-image="blue" type="radio" id="blue" name="color" value="blue" checked>
+                  <label for="blue">${data.delivery_time}</label>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Cable Configuration -->
+            <div class="cable-config">
+              <span>Cable configuration</span>
+
+              <div class="cable-choose">
+                <button>Straight</button>
+                <button>Coiled</button>
+                <button>Long-coiled</button>
+              </div>
+
+              <a href="#">How to configurate your headphones</a>
+            </div>
+          </div>
+
+          <!-- Product Pricing -->
+          <div class="product-price">
+            <span>${data.price}$</span>
+            <a href="#" class="cart-btn">Add to cart</a>
+          </div>
+        </div>`
+        $(".container-article").html(html);
+        
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+      //  loginService.logout();
+      }
+    });
   }
 }
-articleIndex.init();
+//articleIndex.init();
+
+
+function getHref(id){
+//  $("#article").attr("id", 'article?'+id);
+}

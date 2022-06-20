@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tutorial</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <!-- CSS -->
-    <link href="css/index.css" rel="stylesheet">
-    <meta name="robots" content="noindex,follow" />
+<div id="page-wrapper">
 
-  </head>
 
-  <body>
-    <main class="container">
+    <div class="container-article">
 
       <!-- Left Column / Headphones Image -->
       <div class="left-column">
@@ -38,21 +26,14 @@
 
           <!-- Product Color -->
           <div class="product-color">
-            <span>Color</span>
+            <span>Delivery Time</span>
 
             <div class="color-choose">
               <div>
-                <input data-image="red" type="radio" id="red" name="color" value="red" checked>
-                <label for="red"><span></span></label>
+                <input data-image="blue" type="radio" id="blue" name="color" value="blue" checked>
+                <label for="blue">7d</label>
               </div>
-              <div>
-                <input data-image="blue" type="radio" id="blue" name="color" value="blue">
-                <label for="blue"><span></span></label>
-              </div>
-              <div>
-                <input data-image="black" type="radio" id="black" name="color" value="black">
-                <label for="black"><span></span></label>
-              </div>
+
             </div>
 
           </div>
@@ -77,10 +58,7 @@
           <a href="#" class="cart-btn">Add to cart</a>
         </div>
       </div>
-    </main>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
-    <script src="js/article-details-js.js" charset="utf-8"></script>
-  </body>
-</html>
+    </div>
+</div>
+<script type="text/javascript" src="myJquery/article-index.js"></script>
+<script type="text/javascript">articleIndex.listItemById()</script>

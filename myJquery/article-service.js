@@ -106,6 +106,7 @@ var articleService = {
     article.delivery_time=$("#input-delivery").val();
     article.type=$("#input-type").find(":selected").text();
     article.special_deals=$("#input-special-price").val();
+    article.img_link=$("#input-link").val();
     console.log(article.type);
     $.ajax({
       url: `rest/article/${id}`,
@@ -148,7 +149,7 @@ var articleService = {
         $("#input-delivery").val(data.delivery_time);
         $("#input-type").val(data.type);
         $("#input-special-price").val(data.special_deals);
-        
+        $("#input-link").val(data.img_link);
         $('#form-group-btn').html(html);
 
         $("#modal-btn").attr("disabled", false);
