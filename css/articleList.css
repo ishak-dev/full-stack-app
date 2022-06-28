@@ -1,0 +1,12 @@
+
+.container-article-list{
+
+  width: 70%;
+  margin:0 auto;
+}
+
+.card-border{
+  min-width: 300px ;
+  max-width: 300px;
+  border: solid #ff3100 1px;
+}

@@ -39,14 +39,36 @@
 .card-link:hover{
   color:#ff3100;
 }
-.card {
+.list-card {
   display: inline-block;
   margin-bottom: 15px;
+}
+.get-dots {
+  width: 300px;
+  text-overflow:ellipsis;
+ overflow:hidden;
+
+ display: -webkit-box !important;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+ white-space: normal;
+}
+
+.get-dots-4 {
+  
+  text-overflow:ellipsis;
+ overflow:hidden;
+
+ display: -webkit-box !important;
+ -webkit-line-clamp: 4;
+ -webkit-box-orient: vertical;
+ white-space: normal;
 }
 
 .img-container{
   height: 250px;
 }
+
 .img-container img{
   object-fit: none;
   object-position: center;

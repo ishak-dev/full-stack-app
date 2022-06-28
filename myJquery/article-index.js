@@ -23,7 +23,7 @@ var articleIndex = {
         for (let i = data.length-1; i > data.length-4; i--) {
 
           if (i == data.length-1) {
-            html += `<a href="#article" class="card-link" onclick="articleIndex.listItemById(${data[i].id})"><div class="card first-card" style="width: 28rem;">
+            html += `<a href="#article" class="card-link" onclick="articleIndex.listItemById(${data[i].id})"><div class="card list-card" style="width: 28rem;">
             <div class="img-container">
             <img src="${data[i].img_link}" class="card-img-top" alt="...">
             </div>
@@ -42,7 +42,7 @@ var articleIndex = {
 
           } else {
 
-            html += `<a href="#article" class="card-link" onclick="articleIndex.listItemById(${data[i].id})"><div class="card" style="width: 18rem;">
+            html += `<a href="#article" class="card-link" onclick="articleIndex.listItemById(${data[i].id})"><div class="card list-card" style="width: 18rem;">
               <div class="img-container">
               <img src="${data[i].img_link}" class="card-img-top" alt="...">
               </div>
@@ -62,7 +62,7 @@ var articleIndex = {
           }
 
         }
-        $("#jqueryspapp").append(spa);
+
         $(".last-added").html(html);
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -86,7 +86,7 @@ var articleIndex = {
         for (let i = 0; i < data.length && br <6; i++) {
           console.log(data[i]);
           if(data[i].special_deals != "" && data[i].special_deals!=null){
-            html +=`<div class="card" >
+            html +=`<a href="#article" class="card-link" onclick="articleIndex.listItemById(${data[i].id})"><div class="card list-card" >
               <div class="special">
               <div class="img-container">
               <img src="${data[i].img_link}" class="card-img-top" alt="...">
@@ -94,7 +94,7 @@ var articleIndex = {
               </div>
               <div class="card-body">
                 <h5 class="card-title">${data[i].title}</h5>
-                <p class="card-text">${data[i].description}</p>
+                <p class="card-text get-dots">${data[i].description}</p>
                 <div class="row">
                   <div class="col-9">
                     <p class="card-type" style="text-decoration:line-through; font-size:20px;">${data[i].price}$</p>
@@ -104,7 +104,7 @@ var articleIndex = {
                   </div>
                 </div>
               </div>
-            </div>`
+            </div></a>`
             br++;
           }
 
@@ -120,8 +120,10 @@ var articleIndex = {
   },
   listItemById: function(id){
     if(id != undefined){
-    var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + `?id=${id}`;
-    window.history.pushState({ path: refresh }, '', refresh);
+     var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname;
+     window.history.pushState({ path: refresh }, '', `?id=${id}`);
+     
+
     }
     let searchParams = new URLSearchParams(window.location.search);
     let idUrl = searchParams.get('id');
@@ -184,16 +186,48 @@ var articleIndex = {
 
           <!-- Product Pricing -->
           <div class="product-price">
-            <span>${data.price}$</span>
+            <span>${data.special_deals == "" ? data.price : data.special_deals}$</span>
             <a href="#" class="cart-btn">Add to cart</a>
           </div>
         </div>`
         $(".container-article").html(html);
-        
+
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         toastr.error(XMLHttpRequest.responseJSON.message);
-      //  loginService.logout();
+        loginService.logout();
+      }
+    });
+  },
+  getAllItems: function(){
+    $.ajax({
+      url: "rest/article",
+      type: "GET",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      success: function(data) {
+        console.log("data");
+        var html="";
+        for(let i=0;i<data.length;i++){
+          html+=`<a href="#article" class="card-link" onclick="articleIndex.listItemById(${data[i].id})"><div class="card  card-border">
+          <div class="img-container">
+               <img class="card-img-top" src="${data[i].img_link}" alt="Card image cap"></div>
+               <div class="card-body">
+                 <h5 class="card-title">${data[i].title}</h5>
+                 <p class="card-text get-dots-4">${data[i].description}</p>
+               </div>
+               <div class="card-footer">
+                 <b class="text-muted">${data[i].special_deals == "" ? data[i].price : data[i].special_deals}$</b>
+               </div>
+             </div></a>`;
+        }
+        $("#list-all-articles").html(html);
+
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+        loginService.logout();
       }
     });
   }
