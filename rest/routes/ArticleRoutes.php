@@ -3,11 +3,13 @@
 
 
 Flight::route('GET /article/@id',function($id){
-  Flight::json(Flight::articleService()->getById($id));
+  Flight::json(Flight::articleService()->getArticleById(Flight::get('user'), $id));
 });
 
 Flight::route('GET /article',function(){
-  Flight::json(Flight::articleService()->listAll());
+  $user = Flight::get('user');
+
+  Flight::json(Flight::articleService()->get_admin_article($user));
 });
 
 Flight::route("POST /article",function(){

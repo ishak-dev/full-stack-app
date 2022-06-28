@@ -9,6 +9,10 @@ class ArticleDao extends BaseDao{
     parent::__construct("article");
   }
 
+  public function get_admin_article($user_id){
+    return $this->query("SELECT * FROM article WHERE user_id = :user_id", ['user_id'=>$user_id]);
+  }
+
 
 
 
