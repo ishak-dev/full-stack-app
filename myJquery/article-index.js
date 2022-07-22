@@ -21,8 +21,9 @@ var articleIndex = {
         var spa= "";
 
         for (let i = data.length-1; i > data.length-4; i--) {
-
-          if (i == data.length-1) {
+          console.log(data[i]);
+          if(data[i] == undefined) console.log("no article");
+          else if (i == data.length-1) {
             html += `<a href="#article" class="card-link" onclick="articleIndex.listItemById(${data[i].id})"><div class="card list-card" style="width: 28rem;">
             <div class="img-container">
             <img src="${data[i].img_link}" class="card-img-top" alt="...">
@@ -122,7 +123,7 @@ var articleIndex = {
     if(id != undefined){
      var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname;
      window.history.pushState({ path: refresh }, '', `?id=${id}`);
-     
+
 
     }
     let searchParams = new URLSearchParams(window.location.search);
