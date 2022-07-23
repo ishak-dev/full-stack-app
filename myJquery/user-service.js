@@ -100,6 +100,7 @@ var userService = {
     $("#save-users-btn").attr("disabled", true);
     users.username = $('#username').val();
     users.email = $('#email').val();
+    users.admin = $('#admin').val();
     console.log($('#id').html());
     $.ajax({
       url: `rest/home/${$('#id').html()}`,
@@ -135,6 +136,7 @@ var userService = {
         $("#id").html(data.id);
         $("#username").val(data.username);
         $("#email").val(data.email);
+        $("#admin").val(data.admin);
         $("#exampleModal").modal("show");
         $("#modal-btn").attr("disabled", false);
       },

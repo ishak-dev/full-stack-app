@@ -10,7 +10,7 @@ var articleIndex = {
   },
   listLastAdded: function() {
     $.ajax({
-      url: "rest/article",
+      url: "rest/articleUser",
       type: "GET",
       beforeSend: function(xhr) {
         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
@@ -75,7 +75,7 @@ var articleIndex = {
   },
   listSpecialDeals: function() {
     $.ajax({
-      url: "rest/article",
+      url: "rest/articleUser",
       type: "GET",
       beforeSend: function(xhr) {
         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
@@ -132,7 +132,7 @@ var articleIndex = {
     var html="";
 
     $.ajax({
-      url: `rest/article/${idUrl}`,
+      url: `rest/articleUser/${idUrl}`,
       type: "GET",
       beforeSend: function(xhr) {
         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
@@ -200,9 +200,9 @@ var articleIndex = {
       }
     });
   },
-  getAllItems: function(){
+  getAllItems: function(search){
     $.ajax({
-      url: "rest/article",
+      url: `rest/articleUser${search ? `?search=${search}`:""}`,
       type: "GET",
       beforeSend: function(xhr) {
         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
@@ -234,6 +234,13 @@ var articleIndex = {
   }
 }
 //articleIndex.init();
+
+$("#search-btn").click(function(){
+  var data = $("#search-input").val();
+  articleIndex.getAllItems(data);
+  console.log(data);
+})
+
 
 
 function getHref(id){

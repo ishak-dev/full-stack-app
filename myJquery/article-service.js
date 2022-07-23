@@ -10,9 +10,10 @@ var articleService = {
     })
     articleService.list();
   },
-  list: function() {
+  list: function(search) {
+  console.log(search);
     $.ajax({
-      url: "rest/article",
+      url: `rest/article${search ? `?search=${search}`:""}`,
       type: "GET",
       beforeSend: function(xhr) {
         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
@@ -169,6 +170,11 @@ $("#add-article-btn").click(function() {
   $('#form-group-btn').html('<button type="submit" class="btn btn-primary" id="add-article-btn">Add</button>');
 });
 
+
+$("#search-btn").click(function(){
+  var search = $("#search-input").val();
+  articleService.list(search);
+})
 
 
 

@@ -64,7 +64,7 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-md-0">
-        <input class="form-control" type="text" placeholder="Search">
+        <input id="search-input" class="form-control" type="text" placeholder="Search"><a href="#articlelist"><button id="search-btn" class="btn"type="button" style="background-color:#ff3100;color:white;" name="button">Search</button></a>
       </form>
     </div>
   </nav>
@@ -170,7 +170,7 @@ if(token){
   $(document).ready(function(){
     var app = $.jQuerySPApp({defaultView : "home"});
 
-    
+
     //define routes
 
     app.run();

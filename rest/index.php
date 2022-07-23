@@ -21,8 +21,16 @@ Flight::register('articleService','ArticleService');
 Flight::register('userLoginDao','UserLoginDao');
 
 
-Flight::map('error' ,function(Exception $ex){
-  Flight::json(["message" => $ex->getMessage()],500);
+// Flight::map('error' ,function(Exception $ex){
+//   Flight::json(["message" => $ex->getMessage()],500);
+// });
+
+/* utility function for reading query parameters from URL */
+Flight::map('query', function($name, $default_value = NULL){
+  $request = Flight::request();
+  $query_param = @$request->query->getData()[$name];
+  $query_param = $query_param ? $query_param : $default_value;
+  return urldecode($query_param);
 });
 
 //middleware method for login
@@ -49,6 +57,16 @@ Flight::route('/*',function(){
   print_r($headers);
 });
 
+Flight::route('/article',function(){
+  $user = Flight::get('user');
+  print_r($user);
+  if($user['admin']!="true"){
+    Flight::json(["message" => "You are not authorized, go back "],403);
+    return FALSE;
+  }
+  return TRUE;
+});
+
 
 /*REST API documentation endpoint*/
 Flight::route('GET /docs.json',function(){
@@ -60,6 +78,7 @@ Flight::route('GET /docs.json',function(){
 require_once __DIR__.'/routes/UserRoutes.php';
 require_once __DIR__.'/routes/CommentRoutes.php';
 require_once __DIR__.'/routes/ArticleRoutes.php';
+require_once __DIR__.'/routes/ArticleUserRoutes.php';
 require_once __DIR__.'/routes/UserLoginRoutes.php';
 
 

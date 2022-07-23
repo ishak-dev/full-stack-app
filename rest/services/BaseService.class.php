@@ -12,17 +12,17 @@ abstract class BaseService{
   public function listAll(){
     return $this->dao->listAll();
   }
-  public function getById($id){
+  public function getById($user,$id){
     return $this->dao->getById($id);
   }
-  public function delete($id){
+  public function delete($user,$id){
     return $this->dao->delete($id);
   }
 
-  public function insert($data){
+  public function insert($user,$data){
     return $this->dao->insert($data);
   }
-  public function update($id,$data){
+  public function update($user,$id,$data){
     return $this->dao->update($id,$data);
   }
 
