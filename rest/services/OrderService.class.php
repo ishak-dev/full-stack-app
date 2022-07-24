@@ -23,11 +23,26 @@ class OrderService extends BaseService{
   public function deleteOrder($id_user){
     return $this->dao->deleteOrder($id_user);
   }
+
   public function getOrderInfo($user){
     if($user['admin'] != "true"){
       throw new Exception("You are not authorized");
     }
     return $this->dao->getOrderInfo($user);
+  }
+
+  public function getOrderInfoById($user,$id){
+    if($user['admin'] != "true"){
+      throw new Exception("You are not authorized");
+    }
+    return $this->dao->getOrderInfoById($user,$id);
+  }
+
+  public function putOrderInfoById($user,$id){
+    if($user['admin'] != "true"){
+      throw new Exception("You are not authorized");
+    }
+    return $this->dao->putOrderInfoById($user,$id);
   }
 
 }

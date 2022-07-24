@@ -44,7 +44,18 @@ class OrderDao extends BaseDao{
   public function getOrderInfo($user){
     return $this->query("SELECT order_requests.id, order_requests.items, users.name, users.surname, users.address, order_requests.price, status
       FROM order_requests
-      INNER JOIN users ON order_requests.id_user = users.id",[""]);
+      INNER JOIN users ON order_requests.id_user = users.id AND status = 'ACTIVE' ",[""]);
+  }
+  public function getOrderInfoById($user,$id){
+    return $this->query_unique("SELECT order_requests.id, order_requests.items, users.name, users.surname, users.address, order_requests.price, status
+      FROM order_requests
+      INNER JOIN users ON order_requests.id_user = users.id AND order_requests.id = :id",['id'=>$id]);
+  }
+
+  public function putOrderInfoById($user,$id){
+    parent::__construct("order_requests");
+    $data['status'] = "APPROVED";
+    return $this->update($id,$data);
   }
 
 

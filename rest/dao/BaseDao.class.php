@@ -1,15 +1,19 @@
 <?php
+
+require_once __DIR__.'/../Config.class.php';
+
 class BaseDao{
   private $conn;
   private $table_name;
   public function __construct($table_name){
     $this->table_name = $table_name;
-    $database = "127.0.0.1:3309";
-    $username = "root";
-    $password = "user";
-    $schema = "webprogramming";
+    $servername = Config::DB_HOST();
+    $username = Config::DB_USERNAME();
+    $password = Config::DB_PASSWORD();
+    $schema = Config::DB_SCHEME();
+    $port = Config::DB_PORT();
 
-    $this->conn = new PDO ("mysql:host=$database;dbname=$schema", $username,$password);
+    $this->conn = new PDO ("mysql:host=$servername;dbname=$schema;port=$port", $username, $password);
     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
 

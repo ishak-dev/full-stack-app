@@ -33,4 +33,11 @@ Flight::route('GET /adminorder',function(){
   Flight::json(Flight::orderService()->getOrderInfo(Flight::get('user')));
 });
 
+Flight::route('GET /adminorder/@id',function($id){
+  Flight::json(Flight::orderService()->getOrderInfoById(Flight::get('user'),$id));
+});
+
+Flight::route('PUT /adminorder/@id',function($id){
+  Flight::json(Flight::orderService()->putOrderInfoById(Flight::get('user'),$id));
+});
 ?>

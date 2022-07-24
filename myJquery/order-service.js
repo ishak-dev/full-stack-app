@@ -18,7 +18,7 @@ var orderService = {
            <td>${data[i].items}</td>
            <td>${data[i].name} ${data[i].surname}</td>
            <td>${data[i].address}</td>
-           <td>${data[i].price}</td>
+           <td>${data[i].price} $</td>
            <td>${data[i].id}</td>
 
            <td><button type="button" onclick="orderService.get(${data[i].id})" class="btn btn-primary" id="modal-btn" data-bs-toggle="modal" data-bs-target="#orderModal">
@@ -35,24 +35,20 @@ var orderService = {
       }
     });
   },
-  get: function(){
+  get: function(id){
     $.ajax({
-      url: `rest/orderadmin/${id}`,
+      url: `rest/adminorder/${id}`,
       type: "GET",
       beforeSend: function(xhr) {
         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
       },
       success: function(data) {
         console.log(data);
-        $("#id").html(data.id);
-        $("#input-title").val(data.title);
-        $("#input-price").val(data.price);
-        $("#input-description").val(data.description);
-        $("#input-delivery").val(data.delivery_time);
-        $("#input-type").val(data.type);
-        $("#input-special-price").val(data.special_deals);
-        $("#input-link").val(data.img_link);
-        $('#form-group-btn').html(html);
+        $("#items").html(data.items);
+        $("#name").html(data.name);
+        $("#price").html(data.price  + " $");
+        $("#address").html(data.address);
+        $("#order-id").html(data.id);
 
         $("#modal-btn").attr("disabled", false);
       },
@@ -61,10 +57,30 @@ var orderService = {
         loginService.logout();
       },
     })
+  },
+  approveOrder: function(id){
+    $.ajax({
+      url: `rest/adminorder/${id}`,
+      type: 'PUT',
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      contentType: "application/json",
+      dataType: "json",
+      success: function(result) {
+        $("#orderModal").modal("hide");
+        orderService.list();
+        toastr.success("You approved successfully");
+      },
+
+    })
   }
 }
 
-
-
-
 orderService.list();
+
+
+$("#approve-order-btn").click(function(){
+  let id = $("#order-id").html();
+  orderService.approveOrder(id);
+})
