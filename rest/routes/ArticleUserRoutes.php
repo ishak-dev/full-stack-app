@@ -1,6 +1,6 @@
 <?php
 Flight::route('GET /articleUser/@id',function($id){
-  Flight::json(Flight::articleService()->getById(0, $id));//If we want to include check again remove "0" and comment from getById
+  Flight::json(Flight::articleService()->getById(0, $id));//If we want to include check again, remove "0" and comment from getById
 });
 
 Flight::route('GET /articleUser',function(){
@@ -8,5 +8,7 @@ Flight::route('GET /articleUser',function(){
   $search = Flight::query('search');
   Flight::json(Flight::articleService()->getAllArticle($search));
 });
+
+
 
 ?>

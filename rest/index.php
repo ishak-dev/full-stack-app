@@ -11,12 +11,14 @@ require_once __DIR__ ."/../vendor/autoload.php";
 require_once __DIR__ ."/services/CommentService.class.php";
 require_once __DIR__ ."/services/UserService.class.php";
 require_once __DIR__ ."/services/ArticleService.class.php";
+require_once __DIR__ ."/services/OrderService.class.php";
 //require_once __DIR__ ."/services/UserLoginService.class.php";
 require_once __DIR__ ."/dao/UserLoginDao.class.php";
 
 Flight::register('userService','UserService');
 Flight::register('commentService','CommentService');
 Flight::register('articleService','ArticleService');
+Flight::register('orderService','OrderService');
 //Flight::register('userLoginService','UserLoginService');
 Flight::register('userLoginDao','UserLoginDao');
 
@@ -78,6 +80,7 @@ Flight::route('GET /docs.json',function(){
 require_once __DIR__.'/routes/UserRoutes.php';
 require_once __DIR__.'/routes/CommentRoutes.php';
 require_once __DIR__.'/routes/ArticleRoutes.php';
+require_once __DIR__.'/routes/OrderRoutes.php';
 require_once __DIR__.'/routes/ArticleUserRoutes.php';
 require_once __DIR__.'/routes/UserLoginRoutes.php';
 

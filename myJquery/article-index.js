@@ -6,6 +6,7 @@ var articleIndex = {
   init: function() {
     articleIndex.listLastAdded();
     articleIndex.listSpecialDeals();
+    articleIndex.getUserData();
 
   },
   listLastAdded: function() {
@@ -188,7 +189,7 @@ var articleIndex = {
           <!-- Product Pricing -->
           <div class="product-price">
             <span>${data.special_deals == "" ? data.price : data.special_deals}$</span>
-            <a href="#" class="cart-btn">Add to cart</a>
+            <button class="btn" onclick="articleIndex.addToCart(${data.id})" style="background-color:#ff3100;color:white;">Add to cart</button>
           </div>
         </div>`
         $(".container-article").html(html);
@@ -231,6 +232,258 @@ var articleIndex = {
         loginService.logout();
       }
     });
+  },
+  getUserData: function(){
+    $.ajax({
+      url: `rest/logindata`,
+      type: "GET",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      success: function(data) {
+        console.log(data);
+        var html = `<section class="section about-section gray-bg profile-section" id="about">
+                    <div class="container">
+                        <div class="row align-items-center flex-row-reverse">
+                            <div class="col-lg-6">
+                                <div class="about-text go-to">
+                                    <h3 class="dark-color">About Me</h3>
+                                    <h6 class="theme-color lead">${data.name} ${data.surname}</h6>
+                                    <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
+                                    <div class="row about-list">
+                                        <div class="col-md-6">
+                                            <div class="media">
+                                                <label>Birthday</label>
+                                                <p>${data.birthdate}</p>
+                                            </div>
+                                            <div class="media">
+                                                <label>Age</label>
+                                                <p>22 Yr</p>
+                                            </div>
+                                            <div class="media">
+                                                <label>Residence</label>
+                                                <p>${data.town}</p>
+                                            </div>
+                                            <div class="media">
+                                                <label>Address</label>
+                                                <p>${data.address}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="media">
+                                                <label>E-mail</label>
+                                                <p>${data.email}</p>
+                                            </div>
+                                            <div class="media">
+                                                <label>Phone</label>
+                                                <p>${data.phone}</p>
+                                            </div>
+                                            <div class="media">
+                                                <label>Skype</label>
+                                                <p>skype.0404</p>
+                                            </div>
+                                            <div class="media">
+                                                <label>Admin</label>
+                                                <p>${data.admin}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="about-avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="counter">
+                            <div class="row">
+                                <div class="col-6 col-lg-3">
+                                    <div class="count-data text-center">
+                                        <h6 class="count h2" data-to="500" data-speed="500">${data.orders}</h6>
+                                        <p class="m-0px font-w-600">Orders</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-lg-3">
+                                    <div class="count-data text-center">
+                                        <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                                        <p class="m-0px font-w-600">${data.money_spent}$</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-lg-3">
+                                    <div class="count-data text-center">
+                                        <h6 class="count h2" data-to="850" data-speed="850">850</h6>
+                                        <p class="m-0px font-w-600">Photo Capture</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-lg-3">
+                                    <div class="count-data text-center">
+                                        <h6 class="count h2" data-to="190" data-speed="190">190</h6>
+                                        <p class="m-0px font-w-600">Telephonic Talk</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>`;
+
+                $("#container-profile").html(html);
+
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+        loginService.logout();
+      }
+    });
+  },
+  addToCart: function(id){
+    var cart = {};
+    cart.order_date = "7/7/2020";
+    cart.id_article = id;
+    cart.id_user = "";
+    $.ajax({
+      url: `rest/cart`,
+      type: 'POST',
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      data: JSON.stringify(cart),
+      contentType: "application/json",
+      dataType: "json",
+
+      success: function(result) {
+        toastr.success("You added to cart");
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+      }
+    })
+  },
+  getFromCart: function(){
+    $.ajax({
+      url: `rest/cart`,
+      type: "GET",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      success: function(data) {
+        console.log(data);
+        var html="";
+        html+=`<div class="d-flex justify-content-between align-items-center mb-5">
+          <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+          <h6 class="mb-0 text-muted">${data.length} items</h6>
+        </div>
+
+
+        `
+        for(let i=0;i<data.length;i++){
+          html+=`<hr class="my-4">
+
+                  <div class="row mb-4 d-flex justify-content-between align-items-center">
+                    <div class="col-md-2 col-lg-2 col-xl-2">
+                      <img
+                        src="${data[i].img_link}"
+                        class="img-fluid rounded-3" alt="Cotton T-shirt">
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                      <h6 class="text-muted">${data[i].type}</h6>
+                      <h6 class="text-black mb-0">${data[i].title}</h6>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                      <button class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                        <i class="fas fa-minus"></i>
+                      </button>
+
+                      <input id="form1" min="0" name="quantity" value="1" type="number"
+                        class="form-control form-control-sm" />
+
+                      <button class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                      <h6 class="mb-0">${data[i].price} $</h6>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                      <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                    </div>
+                  </div>`;
+        }
+        html+=`<hr class="my-4">
+
+        <div class="pt-5">
+          <h6 class="mb-0"><a href="#!" class="text-body"><i
+                class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+        </div>`;
+        $("#shoping-cart-items").html(html);
+
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+        loginService.logout();
+      }
+    }).then(articleIndex.getTotalPrice());
+  },
+  getTotalPrice:function(){
+    $.ajax({
+      url: `rest/cartprice`,
+      type: "GET",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      success: function(data) {
+        console.log(data);
+        var html=`<h5 class="text-uppercase">items </h5>
+        <h5>${data[0].price} $</h5>`;
+        $("#total-price").html(html);
+
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+        loginService.logout();
+      }
+    });
+  },
+  confirmOrder: function(){
+    var order_request = {};
+    order_request.items = "";
+    order_request.id_user = "";
+    order_request.price = "";
+    order_request.status = "";
+    $.ajax({
+      url: `rest/order_request`,
+      type: 'POST',
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      data: JSON.stringify(order_request),
+      contentType: "application/json",
+      dataType: "json",
+
+      success: function(result) {
+        console.log(result);
+        toastr.success("Your order submitted");
+        $.ajax({
+          url:`rest/order`,
+          type: 'DELETE',
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+          },
+          success: function(result){
+            console.log(result);
+            articleIndex.getFromCart();
+          }
+        });
+
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+        toastr.error(XMLHttpRequest.responseJSON.message);
+        toastr.error("Unable to confirm")
+      }
+    })
   }
 }
 //articleIndex.init();
@@ -239,6 +492,15 @@ $("#search-btn").click(function(){
   var data = $("#search-input").val();
   articleIndex.getAllItems(data);
   console.log(data);
+})
+
+$(document).ready(function(){
+$(document).on("click",".home-search",function(){
+  console.log("kliknuto");
+  var data = $(this).html();
+  console.log(data);
+  articleIndex.getAllItems(data);
+})
 })
 
 

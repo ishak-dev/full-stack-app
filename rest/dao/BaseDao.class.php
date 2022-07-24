@@ -32,6 +32,13 @@ class BaseDao{
     $stmt->execute();
   }
 
+
+  public function deleteOrder($id_user){
+      $stmt=$this->conn->prepare("DELETE FROM orders WHERE id_user = :id_user");
+      $stmt->bindParam(':id_user',$id_user);
+      $stmt->execute();
+  }
+
   public function insert($data){
     $query = "INSERT INTO ".$this->table_name." (";
     foreach ($data as $column => $value){
@@ -64,6 +71,7 @@ class BaseDao{
     $data['id']= $id;
     $stmt->execute($data);
   }
+
 
   protected function query($query, $parmas){
     $stmt = $this->conn->prepare($query);

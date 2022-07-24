@@ -24,4 +24,9 @@ Flight::route("POST /login",function(){
   }
 
 });
+
+Flight::route("GET /logindata",function(){
+  $user = Flight::get('user');
+  Flight::json($user);
+});
 ?>
