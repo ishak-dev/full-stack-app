@@ -22,7 +22,7 @@ class ArticleDao extends BaseDao{
     if(isset($search)){
       $query .= " title LIKE '%".$search."%' ";
     }
-    return $this->query($query,['']);
+    return $this->query($query,null);
   }
 
 
