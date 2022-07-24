@@ -18,11 +18,11 @@ class ArticleDao extends BaseDao{
   }
 
   public function getAllArticle($search=NULL){
-    $query = "SELECT * FROM article WHERE ";
+    $query = "SELECT * FROM article WHERE 0=:num";
     if(isset($search)){
-      $query .= " title LIKE '%".$search."%' ";
+      $query .= " AND title LIKE '%".$search."%' ";
     }
-    return $this->query($query,null);
+    return $this->query($query,['num'=>"0"]);
   }
 
 
