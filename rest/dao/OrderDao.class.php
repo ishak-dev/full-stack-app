@@ -44,7 +44,7 @@ class OrderDao extends BaseDao{
   public function getOrderInfo($user){
     return $this->query("SELECT order_requests.id, order_requests.items, users.name, users.surname, users.address, order_requests.price, status
       FROM order_requests
-      INNER JOIN users ON order_requests.id_user = users.id AND status = 'ACTIVE' ",[""]);
+      INNER JOIN users ON order_requests.id_user = users.id AND status = 'ACTIVE' ",["null"=>"null"]);
   }
   public function getOrderInfoById($user,$id){
     return $this->query_unique("SELECT order_requests.id, order_requests.items, users.name, users.surname, users.address, order_requests.price, status
