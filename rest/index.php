@@ -32,7 +32,8 @@ Flight::map('query', function($name, $default_value = NULL){
   $request = Flight::request();
   $query_param = @$request->query->getData()[$name];
   $query_param = $query_param ? $query_param : $default_value;
-  return urldecode($query_param);
+  if($query_param != null){
+  return urldecode($query_param);}
 });
 
 //middleware method for login
