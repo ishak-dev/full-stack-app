@@ -257,8 +257,8 @@ var articleIndex = {
                                                 <p>${data.birthdate}</p>
                                             </div>
                                             <div class="media">
-                                                <label>Age</label>
-                                                <p>22 Yr</p>
+                                                <label>Post</label>
+                                                <p>${data.post_code}</p>
                                             </div>
                                             <div class="media">
                                                 <label>Residence</label>
@@ -278,10 +278,7 @@ var articleIndex = {
                                                 <label>Phone</label>
                                                 <p>${data.phone}</p>
                                             </div>
-                                            <div class="media">
-                                                <label>Skype</label>
-                                                <p>skype.0404</p>
-                                            </div>
+  
                                             <div class="media">
                                                 <label>Admin</label>
                                                 <p>${data.admin}</p>
@@ -300,26 +297,26 @@ var articleIndex = {
                             <div class="row">
                                 <div class="col-6 col-lg-3">
                                     <div class="count-data text-center">
-                                        <h6 class="count h2" data-to="500" data-speed="500">${data.orders}</h6>
-                                        <p class="m-0px font-w-600">Orders</p>
+                                        <h6 class="count h2" data-to="500" data-speed="500">${data.name}</h6>
+                                        <p class="m-0px font-w-600">Name</p>
                                     </div>
                                 </div>
                                 <div class="col-6 col-lg-3">
                                     <div class="count-data text-center">
-                                        <h6 class="count h2" data-to="150" data-speed="150">150</h6>
-                                        <p class="m-0px font-w-600">${data.money_spent}$</p>
+                                        <h6 class="count h2" data-to="150" data-speed="150">${data.phone}</h6>
+                                        <p class="m-0px font-w-600">My number</p>
                                     </div>
                                 </div>
                                 <div class="col-6 col-lg-3">
                                     <div class="count-data text-center">
-                                        <h6 class="count h2" data-to="850" data-speed="850">850</h6>
-                                        <p class="m-0px font-w-600">Photo Capture</p>
+                                        <h6 class="count h2" data-to="850" data-speed="850">${data.town}</h6>
+                                        <p class="m-0px font-w-600">Town</p>
                                     </div>
                                 </div>
                                 <div class="col-6 col-lg-3">
                                     <div class="count-data text-center">
-                                        <h6 class="count h2" data-to="190" data-speed="190">190</h6>
-                                        <p class="m-0px font-w-600">Telephonic Talk</p>
+                                        <h6 class="count h2" data-to="190" data-speed="190">${data.username}</h6>
+                                        <p class="m-0px font-w-600">Username</p>
                                     </div>
                                 </div>
                             </div>

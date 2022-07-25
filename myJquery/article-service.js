@@ -32,8 +32,7 @@ var articleService = {
 
            <td><button type="button" onclick="articleService.get(${data[i].id})" class="btn btn-primary" id="modal-btn" data-bs-toggle="modal" data-bs-target="#add-article-modal">
                view</button>
-               <button type="button" onclick="commentService.listComments(${data[i].id})" class="btn btn-success" id="modal-btn" data-bs-toggle="modal" data-bs-target="#commentsModal" >
-                   Manage reviews</button>
+               
            </td>
          </tr>
          `

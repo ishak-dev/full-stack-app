@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(to bottom right, #2f2f2f, #8e8e8e);
+  background-image: linear-gradient(to bottom right, #2f2f2f, #18202E);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -11,7 +11,7 @@ body {
   width: 100%;
   margin: 0 auto;
   margin-bottom: 10px;
-  border: #D6ED17FF solid 2px;
+  border: #ff3100 solid 2px;
   border-radius: 6px;
   height: 40px;
   background-color: #535353;
@@ -35,7 +35,7 @@ body {
 }
 
 .left-side {
-  background-color: #363636;
+  background-color: #18202E;
   border-top-left-radius: 14px;
   border-bottom-left-radius: 14px;
   padding: 80px 50px;
@@ -47,7 +47,7 @@ p {
 
 a {
   text-decoration: none;
-  color: #D6ED17FF;
+  color: #ff3100;
 }
 
 .p-tag {
@@ -60,7 +60,7 @@ button {
   width: 100%;
   border: none;
   border-radius: 20px;
-  background-color: #D6ED17FF;
+  background-color: #ff3100;
   color: white;
   height: 40px;
 }
@@ -81,7 +81,7 @@ button {
 
 .right-side {
   background-image: url("../img/motor.jpg");
-  background-color: #828282;
+  background-color: #18202E;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
   padding: 80px 50px;

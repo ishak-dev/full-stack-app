@@ -18,6 +18,7 @@ Flight::route("POST /login",function(){
       Flight::json(["token"=>$jwt]);
     }else{
       Flight::json(["message"=>"Password is not correct"],404);
+
     }
   }else{
     Flight::json(["message"=>"User is bad"],404);

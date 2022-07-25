@@ -30,8 +30,7 @@ var userService = {
            <td>sit</td>
            <td><button type="button" onclick="userService.get(${data[i].id})" class="btn btn-primary" id="modal-btn" data-toggle="modal" data-target="#exampleModal" >
                view</button>
-               <button type="button" onclick="commentService.listComments(${data[i].id})" class="btn btn-success" id="modal-btn" data-bs-toggle="modal" data-bs-target="#commentsModal" >
-                   Manage comments</button>
+               
            </td>
          </tr>
          `

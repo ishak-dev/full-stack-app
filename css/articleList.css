@@ -1,7 +1,7 @@
 
 .container-article-list{
 
-  width: 75%;
+  width: 80%;
   margin:0 auto;
 }
 
@@ -9,4 +9,17 @@
   min-width: 300px ;
   max-width: 300px;
   border: solid #ff3100 1px;
+}
+
+#refresh-btn{
+  width: 40px;
+  position: fixed;
+  right: 3%;
+  bottom:5%;
+  cursor: pointer;
+}
+
+#refresh-btn:hover{
+  transform: rotate(180deg);
+  transition: all 0.8s ease-in-out 0s;
 }
