@@ -278,7 +278,7 @@ var articleIndex = {
                                                 <label>Phone</label>
                                                 <p>${data.phone}</p>
                                             </div>
-  
+
                                             <div class="media">
                                                 <label>Admin</label>
                                                 <p>${data.admin}</p>
@@ -481,7 +481,40 @@ var articleIndex = {
         toastr.error("Unable to confirm")
       }
     })
+  },
+  getArticleList: function(){
+    $.ajax({
+      url: `rest/userorder`,
+      type: "GET",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+      },
+      success: function(data) {
+        $("#order-list").html("");
+        var html = "";
+        for (let i = 0; i < data.length; i++) {
+          html += `
+         <tr>
+           <td>${data[i].items}</td>
+           <td>${data[i].name} ${data[i].surname}</td>
+           <td>${data[i].address}</td>
+           <td>${data[i].price} $</td>
+           <td>${data[i].id}</td>
+
+
+           </td>
+         </tr>
+         `
+        }
+        $("#order-user-list").html(html);
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+        loginService.logout();
+      }
+    });
   }
+
 }
 //articleIndex.init();
 

@@ -55,7 +55,7 @@
 }
 
 .get-dots-4 {
-  
+
   text-overflow:ellipsis;
  overflow:hidden;
 
@@ -810,3 +810,6 @@ footer button{
   }
 }
 /*Article details end -------------------------------------------------*/
+.card-border{
+  min-height: 400px;
+}

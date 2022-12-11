@@ -58,6 +58,12 @@ class OrderDao extends BaseDao{
     return $this->update($id,$data);
   }
 
+  public function getOrderUSerInfo($user){
+    return $this->query("SELECT order_requests.id, order_requests.items, users.name, users.surname, users.address, order_requests.price, status
+      FROM order_requests
+      INNER JOIN users ON order_requests.id_user = users.id AND users.id=:id ",['id'=>$user['id']]);
+  }
+
 
   // public function insert($user,$article_id){
   //   return $this->query("INSERT INTO orders (date,id_article,id_user) VALUES (:)", ['id_user'=>$id_user]);

@@ -44,6 +44,9 @@ class OrderService extends BaseService{
     }
     return $this->dao->putOrderInfoById($user,$id);
   }
+  public function getOrderUserInfo($user){
+    return $this->dao->getOrderUserInfo($user);
+  }
 
 }
 
